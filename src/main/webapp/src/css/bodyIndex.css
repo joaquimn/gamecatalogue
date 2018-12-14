@@ -1,0 +1,18 @@
+.right-box, .left-box{
+    padding: 0 0 10px 0;
+}
+
+.white-letter{
+    color: #ffffff !important;
+    font-weight: bold !important;
+    border-radius: 0px !important;
+}
+
+.mini-cover{
+    width: 85px;
+    height: 98px;
+}
+
+.link {
+    cursor:pointer;
+}
