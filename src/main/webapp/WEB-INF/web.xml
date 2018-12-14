@@ -36,8 +36,6 @@
     <servlet-class>view.LogoutController</servlet-class>
   </servlet>
 
-
-
   <servlet-mapping>
     <servlet-name>IndexServletController</servlet-name>
     <url-pattern>/index</url-pattern>
@@ -55,12 +53,7 @@
 
   <servlet-mapping>
     <servlet-name>AccessServletController</servlet-name>
-    <url-pattern>/access/*</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>HeaderServletController</servlet-name>
-    <url-pattern>/header/*</url-pattern>
+    <url-pattern>/signUp/*</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

@@ -30,7 +30,7 @@
             <div class="navbar-item">
                 <div class="buttons">
                     <c:if test="${loggedUser.userId == null}">
-                        <button class="button is-primary is-outlined modal-button" data-target="modal-signUp">Sign up</button>
+                        <a href="${pageContext.request.contextPath}/signUp/" class="button is-primary is-outlined modal-button">Sign up</a>
 
                         <button class="button is-primary is-outlined modal-button" data-target="modal-logIn">Log in</button>
                     </c:if>
@@ -79,11 +79,7 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
-                            <c:forEach var="province" items="${provinces}" >
-                                <c:out value="${province.provinceId}" /> aaa
 
-                                <c:out value="${province.provinceName}" />
-                            </c:forEach>
                         </p>
                     </div>
                 </div>

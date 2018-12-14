@@ -21,15 +21,15 @@
             <div class="column">
                 <div class="box right-box">
                     <div class="box has-background-dark is-radiusless">
-                        <div class="white-letter">Sign up</div>
+                        <div class="white-letter">Results for "<c:out value="${gameName}" />"</div>
                     </div>
                     <div class="description-box">
                         <div class="error has-text-centered"><c:out value="${warning}" /></div>
 
                         <table class="table is-fullwidth">
                             <c:forEach var="game" items="${games}">
-                                <tr>
-                                    <td><a href="${pageContext.request.contextPath}/game/game.jsp?gameId=<c:out value="${game.gameId}" />&platformId=<c:out value="${game.platform.platformId}" />"><img src="<c:out value="${game.cover}" />" alt="<c:out value="${game.gameName}" />"></a></td>
+                                <tr onclick="link('<c:out value="${game.platform.platformId}" />', '<c:out value="${game.gameId}" />');" class="link">
+                                    <td><img src="<c:out value="${game.cover}" />" alt="<c:out value="${game.gameName}" />"></td>
                                     <td><c:out value="${game.gameName}" /></td>
                                     <td><img src="${pageContext.request.contextPath}/src/img/platforms/<c:out value="${game.platform.platformLogo}" />" alt="<c:out value="${map.key.platformName}" />" /></td>
                                 </tr>
@@ -45,3 +45,9 @@
 <%@ include file="footer.jsp" %>
 </body>
 </html>
+<script>
+    function link(platformId, gameId)
+    {
+        window.location.href = "game.jsp?gameId="+gameId+"&platformId="+platformId;
+    }
+</script>

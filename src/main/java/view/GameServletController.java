@@ -116,7 +116,7 @@ public class GameServletController extends BaseController {
 
         try {
             String gameName = request.getParameter("gameName");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/game/gameSearch.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/gameSearch.jsp");
 
             String warning = "";
 
@@ -128,8 +128,9 @@ public class GameServletController extends BaseController {
                 warning = "Game not found";
             }
 
-            request.setAttribute("game", games);
+            request.setAttribute("games", games);
             request.setAttribute("warning", warning);
+            request.setAttribute("gameName", gameName);
 
             dispatcher.forward(request, response);
 

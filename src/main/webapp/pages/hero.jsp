@@ -8,7 +8,7 @@
                 is the easiest way to swich your games, make friends and save money.
             </h2>
             <div>
-                <form method="get" action="${pageContext.request.contextPath}/game/gameSearch.jsp">
+                <form method="POST" action="${pageContext.request.contextPath}/game/gameSearch.jsp">
                     <div class="field has-addons">
                         <div class="field is-grouped">
                             <p class="control is-expanded">

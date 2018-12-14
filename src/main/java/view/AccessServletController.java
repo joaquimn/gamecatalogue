@@ -34,7 +34,7 @@ public class AccessServletController extends BaseController {
             String action = extractAction(request);
 
             switch (action) {
-                case "/signUp":
+                case "/signUp/":
                     signUp(request, response);
                     break;
                 default:
