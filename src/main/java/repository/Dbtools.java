@@ -18,7 +18,7 @@ public class Dbtools {
             Class.forName("com.mysql.jdbc.Driver");
             //log("Congrats - Seems your MySQL JDBC Driver Registered!");
         } catch (ClassNotFoundException e) {
-            log("Sorry, couldn't found JDBC driver. Make sure you have added JDBC Maven Dependency Correctly");
+            log("Sorry, couldn't be found JDBC driver. Make sure you have added JDBC Maven Dependency Correctly");
             e.printStackTrace();
             return;
         }
