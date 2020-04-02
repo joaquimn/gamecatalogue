@@ -38,6 +38,9 @@ public class GameServletController extends BaseController {
                 case "/gameAdd.jsp":
                     addGame(request, response);
                     break;
+                case "/gameDelete.jsp":
+                    deleteGame(request, response);
+                    break;
                 case "/gameSearch.jsp":
                     showListGames(request, response);
                     break;
@@ -139,5 +142,16 @@ public class GameServletController extends BaseController {
             String path = request.getContextPath();
             response.sendRedirect(path+"/index");
         }
+    }
+    private void deleteGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        User user = (User) request.getSession().getAttribute("loggedUser");
+        String userId = user.getUserId();
+
+        String gamePlatformId = request.getParameter("gamePlatformId");
+
+
+        String path = request.getContextPath();
+        response.sendRedirect(path+"/user/user.jsp?id="+userId);
     }
 }

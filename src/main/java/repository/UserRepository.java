@@ -331,4 +331,30 @@ public class UserRepository extends Dbtools  {
 
         return users;
     }
+
+    public boolean editUser(String userId, String userName, String postalCode, int cityId, String password) {
+        makeJDBCConnection();
+        boolean rtn = false;
+
+        try {
+            String query = "UPDATE users SET user_name = ?, postal_code = ?, city_id = ?, password = ? WHERE user_id = ?";
+
+            prepareStat = varConn.prepareStatement(query);
+            prepareStat.setString(1, userName);
+            prepareStat.setString(2, postalCode);
+            prepareStat.setInt(3, cityId);
+            prepareStat.setString(4, password);
+            prepareStat.setString(5, userId);
+
+            prepareStat.executeUpdate();
+
+            rtn = true;
+        } catch (SQLException e) {
+            e.getErrorCode();
+        } finally {
+            closeConnection(varConn);
+        }
+
+        return rtn;
+    }
 }

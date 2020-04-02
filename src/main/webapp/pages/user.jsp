@@ -87,6 +87,7 @@
                                     <tr>
                                         <td>
                                             <c:forEach var="game" items="${map.value}">
+                                                <%--<a onclick="deleteGame('<c:out value="${game.platform.platformId}" />');" style="position: absolute; margin-left: 93px;" class="delete" aria-label="close"></a>--%>
                                                 <a href="${pageContext.request.contextPath}/game/game.jsp?gameId=<c:out value="${game.gameId}" />&platformId=<c:out value="${game.platform.platformId}" />"><img src="<c:out value="${game.cover}" />" alt="<c:out value="${game.gameName}" />"></a>
                                             </c:forEach>
                                         </td>
@@ -115,6 +116,7 @@
                                     <tr>
                                         <td>
                                             <c:forEach var="game" items="${map.value}">
+                                                <%--<a onclick="deleteGame('<c:out value="${game.platform.platformId}" />');" style="position: absolute; margin-left: 93px;" class="delete" aria-label="close"></a>--%>
                                                 <a href="${pageContext.request.contextPath}/game/game.jsp?gameId=<c:out value="${game.gameId}" />&platformId=<c:out value="${game.platform.platformId}" />"><img src="<c:out value="${game.cover}" />" alt="<c:out value="${game.gameName}" />"></a>
                                             </c:forEach>
                                         </td>
@@ -202,4 +204,13 @@
 </section>
 <%@ include file="footer.jsp" %>
 </body>
+<script>
+    function deleteGame(gamePlatformId) {
+
+        var r = confirm("Confirm deletion?");
+        if (r == true) {
+            window.location.href = "${pageContext.request.contextPath}/game/gameDelete.jsp?gamePlatformId="+gamePlatformId;
+        }
+    }
+</script>
 </html>

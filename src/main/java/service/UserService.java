@@ -1,36 +1,48 @@
 package service;
 
+import domain.City;
+import domain.Province;
 import domain.User;
 import exception.EntityNotFoundException;
 import repository.UserRepository;
+import view.LoginController;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 public class UserService extends UserTools {
 
     private UserRepository userRepository = new UserRepository();
 
-    public boolean createUser (User user){
+    public User createUser(String userName, String userEmail, String postalCode, int cityId, String password){
+
+        String picture = "generic_avatar.gif";
+        Province province = new Province();
+        City city = new City(province, cityId, "");
+        String userId = UUID.randomUUID().toString();
+        String pwd = encryptPassword(password);
+        User user = new User(userId, userName, userEmail, postalCode, city, 1, picture, pwd, "");
 
         if((userTest(user)) && (!userRepository.checkUserByEmail(user))){
-            user.setUserId(UUID.randomUUID().toString());
-            String pwd = encryptPassword(user.getPassword());
-
-            if( pwd != null ){
-                user.setPassword(pwd);
-            } else {
-                return false;
-            }
-
-            boolean resultCreateUser = userRepository.createUser(user);
-
-            return resultCreateUser;
-        }else{
-            return false;
+            userRepository.createUser(user);
+            user = getUserByEmailPwd( userEmail,  password);
         }
+        return user;
+    }
+
+    public User editUser(String userId, String userName, String userEmail, String postalCode, int cityId, String password){
+
+        User user = new User();
+
+        String pwd = encryptPassword(password);
+
+        boolean rtn = userRepository.editUser(userId, userName, postalCode, cityId, pwd);
+
+        if( rtn == true ){
+            user = getUserByEmailPwd( userEmail,  password);
+        }
+        return user;
     }
 
     public User getUserById(String userId) {
@@ -43,7 +55,6 @@ public class UserService extends UserTools {
 
         return user;
     }
-
 
     public User getUserByEmailPwd(String email, String password){
 

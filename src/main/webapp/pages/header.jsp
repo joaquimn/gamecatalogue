@@ -31,10 +31,10 @@
                 <div class="buttons">
                     <c:if test="${loggedUser.userId == null}">
                         <a href="${pageContext.request.contextPath}/signUp/" class="button is-primary is-outlined modal-button">Sign up</a>
-
                         <button class="button is-primary is-outlined modal-button" data-target="modal-logIn">Log in</button>
                     </c:if>
                     <c:if test="${loggedUser.userId != null}">
+                        <a href="${pageContext.request.contextPath}/signUp/" class="button is-primary is-outlined modal-button">User edit</a>
                         <a href="${pageContext.request.contextPath}/logOut/" class="button is-primary is-outlined modal-button" data-target="">Log out</a>
                     </c:if>
                  </div>
